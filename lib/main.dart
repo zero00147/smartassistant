@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'loggingScreen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  runApp(const SmartAssistantApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+  runApp(SmartAssistantApp());
 }
 
 class SmartAssistantApp extends StatelessWidget {
