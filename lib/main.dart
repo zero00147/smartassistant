@@ -1,11 +1,27 @@
+// main.dart (Updated for Groq Key Loading)
 import 'package:flutter/material.dart';
-import 'loggingScreen.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'LoggingScreen.dart';
+
+String? groqApiKey;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //await dotenv.load(fileName: ".env");
-  runApp(SmartAssistantApp());
+
+  try {
+    await dotenv.load(fileName: ".env");
+    groqApiKey = dotenv.env['GROQ_API_KEY'];
+    if (groqApiKey == null || groqApiKey!.isEmpty) {
+      print("ERROR: GROQ_API_KEY is missing in .env");
+    } else {
+      print("SUCCESS: Groq key loaded: ${groqApiKey!.substring(0, 8)}...");
+    }
+  } catch (e) {
+    print("Failed to load .env: $e");
+    groqApiKey = null;
+  }
+
+  runApp(const SmartAssistantApp());
 }
 
 class SmartAssistantApp extends StatelessWidget {
@@ -18,7 +34,6 @@ class SmartAssistantApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.grey[100],
-        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const LoggingScreen(),
       debugShowCheckedModeBanner: false,

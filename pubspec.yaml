@@ -12,6 +12,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.1.0   # for loading the token from .env
@@ -30,21 +31,35 @@ dependencies:
   permission_handler: ^11.3.1
 
   #For accessing file paths and saving files
-  path_provider: ^2.1.3
+  path_provider: ^2.1.4
 
   #For showing chat messages in a beautiful UI
   chat_bubbles: ^1.6.0
 
-  #For speech-to-text (if you want real-time recognition)
+  #For speech-to-text
   speech_to_text: ^7.0.0
   shared_preferences: ^2.5.3
+  sqflite: ^2.3.3+1
+  path: ^1.9.0
+  audioplayers: ^6.0.0
+  avatar_glow: ^3.0.1
 
   http: ^1.2.0
+avatar_glow: ^3.0.1
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.14.1
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -52,3 +67,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   uses-material-design: true
+  assets:
+    - assets/flags/us.png
+    - assets/flags/bd.png
+    - .env
